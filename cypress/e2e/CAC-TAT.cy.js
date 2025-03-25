@@ -16,12 +16,14 @@ describe('Central de atendimento ao cliente TAT', () => {
 
 
   it('Preenche os campos obrigatórios e envia o formulário', () => {
-    cy.get('#firstName').type('Aline')
-    cy.get('#lastName').type('Edvania')
-    cy.get('#email').type('aline.franca@gmail.com')
-    cy.get('#open-text-area').type('Preciso de ajuda com os testes')
+    const longText = Cypress._.repeat('Eu preciso de ajuda, por favor', 10)
+
+    cy.get('#firstName').type('Aline', { delay: 100 })
+    cy.get('#lastName').type('Edvania', { delay: 120 })
+    cy.get('#email').type('aline.franca@gmail.com', { delay: 130 })
+    cy.get('#open-text-area').type(longText, { delay: 0 })
     cy.get('button[type="submit"]').click()
-    
+
 
     cy.get('.success').should('be.visible');
 
