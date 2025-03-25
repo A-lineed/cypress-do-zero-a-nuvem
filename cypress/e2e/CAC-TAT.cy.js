@@ -43,11 +43,56 @@ describe('Central de atendimento ao cliente TAT', () => {
 
   })
 
-  it.only('Campo telefone continua vazio quando preenchido com valor não-numérico', () => {
+  it('Campo telefone continua vazio quando preenchido com valor não-numérico', () => {
 
     cy.get('#phone')
       .type('Aline Edvania')
       .should('have.value', '')
+
+  })
+
+  it('Exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', () => {
+    cy.get('#firstName').type('Aline', { delay: 50 })
+    cy.get('#lastName').type('Edvania', { delay: 120 })
+    cy.get('#email').type('aline.franca@', { delay: 10 })
+    cy.get('#open-text-area').type('Preciso de ajuda com a automação', { delay: 0 })
+    cy.get('#phone-checkbox').check()
+    cy.get('button[type="submit"]').click()
+
+
+    cy.get('.error').should('be.visible');
+
+  })
+
+
+  it.only('Preenche e limpa os campos nome, sobrenome, email e telefone', () => {
+    cy.get('#firstName')
+      .type('Aline')
+      .should('have.value', 'Aline')
+      .clear()
+      .should('have.value', '')
+
+
+    cy.get('#lastName')
+      .type('Edvania')
+      .should('have.value', 'Edvania')
+      .clear()
+      .should('have.value', '')
+
+    cy.get('#email')
+      .type('aline.franca@')
+      .should('have.value', 'aline.franca@')
+      .clear()
+      .should('have.value', '')
+
+    cy.get('#open-text-area')
+      .type('Preciso de ajuda com a automação')
+      .should('have.value', 'Preciso de ajuda com a automação')
+      .clear()
+      .should('have.value', '')
+
+
+
 
   })
 })
