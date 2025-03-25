@@ -28,4 +28,26 @@ describe('Central de atendimento ao cliente TAT', () => {
     cy.get('.success').should('be.visible');
 
   })
+
+  it('Exibe mensagem de erro ao submeter o formulário com um email com formatação inválida', () => {
+    const longText = Cypress._.repeat('Eu preciso de ajuda, por favor', 10)
+
+    cy.get('#firstName').type('Aline', { delay: 50 })
+    cy.get('#lastName').type('Edvania', { delay: 120 })
+    cy.get('#email').type('aline.franca@', { delay: 10 })
+    cy.get('#open-text-area').type(longText, { delay: 0 })
+    cy.get('button[type="submit"]').click()
+
+
+    cy.get('.error').should('be.visible');
+
+  })
+
+  it.only('Campo telefone continua vazio quando preenchido com valor não-numérico', () => {
+
+    cy.get('#phone')
+      .type('Aline Edvania')
+      .should('have.value', '')
+
+  })
 })
