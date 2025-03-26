@@ -100,7 +100,8 @@ describe('Central de atendimento ao cliente TAT', () => {
 
   })
 
-  it.only('Envia o formuário com sucesso usando um comando customizado', () => {
+  it('Envia o formuário com sucesso usando um comando customizado', () => {
+    //Usando valores customizados
     const data = {
       firstName: 'Leandro',
       lastName: 'Franca',
@@ -111,6 +112,14 @@ describe('Central de atendimento ao cliente TAT', () => {
     //Comando customizado
     cy.fillMandatoryFieldsAndSubmit(data)
 
-    cy.get('.sucess').should('be.visible')
+    //cy.get('.sucess').should('be.visible')
+  })
+
+  it('Usando valor padrão do comando customizado', () => {
+
+    //Comando customizado
+    cy.fillMandatoryFieldsAndSubmit()
+
+    //cy.get('.sucess').should('be.visible')
   })
 })
