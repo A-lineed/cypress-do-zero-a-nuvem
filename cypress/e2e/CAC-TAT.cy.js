@@ -100,10 +100,17 @@ describe('Central de atendimento ao cliente TAT', () => {
 
   })
 
-  it.only('Envia o formuário com sucesso usando um comando customizado'), () => {
+  it.only('Envia o formuário com sucesso usando um comando customizado', () => {
+    const data = {
+      firstName: 'Leandro',
+      lastName: 'Franca',
+      email: 'leandro@gmail.com',
+      text: 'Teste'
+    }
+
     //Comando customizado
-    cy.fillMandatoryFieldsAndSubmit()
+    cy.fillMandatoryFieldsAndSubmit(data)
 
     cy.get('.sucess').should('be.visible')
-  }
+  })
 })
