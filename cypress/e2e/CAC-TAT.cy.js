@@ -22,7 +22,7 @@ describe('Central de atendimento ao cliente TAT', () => {
     cy.get('#lastName').type('Edvania', { delay: 120 })
     cy.get('#email').type('aline.franca@gmail.com', { delay: 130 })
     cy.get('#open-text-area').type(longText, { delay: 0 })
-    cy.get('button[type="submit"]').click()
+    cy.contains('button', 'Enviar').click()
 
 
     cy.get('.success').should('be.visible');
@@ -36,8 +36,8 @@ describe('Central de atendimento ao cliente TAT', () => {
     cy.get('#lastName').type('Edvania', { delay: 120 })
     cy.get('#email').type('aline.franca@', { delay: 10 })
     cy.get('#open-text-area').type(longText, { delay: 0 })
-    cy.get('button[type="submit"]').click()
-
+    cy.contains('button', 'Enviar').click()
+    
 
     cy.get('.error').should('be.visible');
 
@@ -57,7 +57,7 @@ describe('Central de atendimento ao cliente TAT', () => {
     cy.get('#email').type('aline.franca@', { delay: 10 })
     cy.get('#open-text-area').type('Preciso de ajuda com a automação', { delay: 0 })
     cy.get('#phone-checkbox').check()
-    cy.get('button[type="submit"]').click()
+    cy.contains('button', 'Enviar').click()
 
 
     cy.get('.error').should('be.visible');
@@ -112,7 +112,7 @@ describe('Central de atendimento ao cliente TAT', () => {
     //Comando customizado
     cy.fillMandatoryFieldsAndSubmit(data)
 
-    //cy.get('.sucess').should('be.visible')
+    //camecy.get('.sucess').should('be.visible')
   })
 
   it('Usando valor padrão do comando customizado', () => {
