@@ -37,7 +37,7 @@ describe('Central de atendimento ao cliente TAT', () => {
     cy.get('#email').type('aline.franca@', { delay: 10 })
     cy.get('#open-text-area').type(longText, { delay: 0 })
     cy.contains('button', 'Enviar').click()
-    
+
 
     cy.get('.error').should('be.visible');
 
@@ -121,5 +121,14 @@ describe('Central de atendimento ao cliente TAT', () => {
     cy.fillMandatoryFieldsAndSubmit()
 
     //cy.get('.sucess').should('be.visible')
+  })
+
+
+  it.only('Seleciona um produto (Youtube) por seu texto', () => {
+
+    cy.get('#product')
+      .select('YouTube')
+      .should('have.value', 'youtube')
+
   })
 })
