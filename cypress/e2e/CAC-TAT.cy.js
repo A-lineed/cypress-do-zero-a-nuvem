@@ -139,4 +139,12 @@ describe('Central de atendimento ao cliente TAT', () => {
       .should('have.value', 'mentoria')
 
   })
+
+
+  it('Seleciona um produto (Blog) por seu índice', () => {
+
+    cy.get('#product').select(1)
+      .should('have.value', 'blog')
+
+  })
 })
