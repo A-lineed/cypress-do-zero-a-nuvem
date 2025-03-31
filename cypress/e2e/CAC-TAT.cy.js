@@ -173,9 +173,19 @@ describe('Central de atendimento ao cliente TAT', () => {
       .should('not.be.checked')
   })
 
-  it.only('Seleciona um arquivo da pasta fixtures', () => {
+  it('Seleciona um arquivo da pasta fixtures', () => {
     cy.get('input[type="file"]')
       .selectFile('cypress/fixtures/example.json')
+      .should((input) => {
+        //console.log(input[0].files[0].name) -> Verifica se o nome do arquivo está sendo retornado corretamente
+        expect(input[0].files[0].name).to.equal('example.json')
+
+      })
+  })
+
+  it.only('Seleciona um arquivo simulando um drag-and-drop', () => {
+    cy.get('#file-upload')
+      .selectFile('cypress/fixtures/example.json', { action: 'drag-drop' })
       .should((input) => {
         //console.log(input[0].files[0].name) -> Verifica se o nome do arquivo está sendo retornado corretamente
         expect(input[0].files[0].name).to.equal('example.json')
