@@ -193,7 +193,7 @@ describe('Central de atendimento ao cliente TAT', () => {
       })
   })
 
-  it.only('Seleciona um arquivo utilizando uma fixture para a qual foi dada um alias', () => {
+  it('Seleciona um arquivo utilizando uma fixture para a qual foi dada um alias', () => {
     cy.fixture('example.json').as('sampleFile')
     cy.get('#file-upload')
       .selectFile('@sampleFile')
@@ -201,6 +201,14 @@ describe('Central de atendimento ao cliente TAT', () => {
         expect(input[0].files[0].name).to.equal('example.json')
 
       })
+  })
+
+  it.only('Verifica que a política de privacidade abre em outra aba sem a necessidade de um clique', () => {
+    //É muito difícil uma página web ter só um link, então utilizar seletor como esse não é uma boa prática, é muito genérico
+    //cy.get('a')
+    cy.contains('a', 'Política de Privacidade')
+      .should('have.attr', 'href', 'privacy.html')
+      .and('have.attr', 'target', '_blank')
   })
 
 })
