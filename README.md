@@ -1,28 +1,34 @@
-# 🌲 Cypress, do Zero à Nuvem ☁️
+# Cypress, do zero à Nuvem.
 
-👋 Seja bem-vindo(a)!
+## Projeto do curso de "Cypress, do zero à nuvem" da escola online Talking About Testing.
 
-É muito bom tê-lo(a) aqui. Tenho certeza que você vai amar esse curso. ❤️
+### Pré-requisitos
 
-## O que você vai aprender?
+Eu usei as versões 2.46.0 do git e v20.18.1 do node. Eu sugiro que você use o mesmo ou versões LTS posteriores.
 
-- Como configurar um projeto Cypress do zero
-- Como visitar páginas locais e remotas
-- Como lidar com os elementos mais comuns encontrados em aplicações web
-- Como testar upload de arquivos
-- Como realizar as mais diversas verificações de resultados esperados
-- Como criar comandos customizados
-- Como lidar com links que abrem em outra aba do navegador
-- Como rodar testes simulando as dimensões de um dispositivo móvel
-- Como resolver os mesmos problemas de diferentes formas, conhecendo a [API do Cypress](https://docs.cypress.io/api/table-of-contents)
-- Como criar uma documentação mínima para seu projeto de testes automatizados
-- Como executar os testes em um _workflow_ de integração contínua sempre que mudanças ocorrerem no código da aplicação (ou dos testes)
-- Como integrar seu _workflow_ de integração contínua com o Cypress Cloud (o serviço de gestão de testes do Cypress na nuvem)
+### Instalação
+Execute `npm install` para instalar as dependências de desenvolvimento.
 
-## Vamos começar?
+### Testes
+Neste projeto, você pode executar os testes em um viewport de desktop ou móvel.
 
-Vá para a seção [estrutura do curso](./lessons/_course-structure_.md).
+### Desktop
 
-___
+Execute `npm test` para rodar os testes no modo headless em um viewport de desktop.
 
-Este é um curso da **Escola Talking About Testing**.
+Ou, execute `npm run cy:open` para abrir o aplicativo Cypress em um viewport de desktop.
+
+### Mobile
+
+Execute `npm run test:mobile` para rodar os testes no modo headless em um viewport móvel.
+
+Ou, execute `npm run cy:open:mobile` para abrir o aplicativo Cypress em um viewport móvel.
+
+## Apoie este projeto
+
+Se você quiser apoiar este projeto, deixe uma 🌟
+
+---
+
+Este projeto foi criado com 💜 por Aline Edvania
+
