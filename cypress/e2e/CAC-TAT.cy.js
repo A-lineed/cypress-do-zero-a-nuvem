@@ -250,10 +250,34 @@ describe('Central de atendimento ao cliente TAT', () => {
       .should('not.be.visible')
   })
 
-  it.only('Preenche o campo da área de texto usando o comando invoke', () => {
+  it('Preenche o campo da área de texto usando o comando invoke', () => {
     cy.get('#open-text-area')
-    .invoke('val', 'Um texto qualquer')
-    .should('have.value', 'Um texto qualquer')
+      .invoke('val', 'Um texto qualquer')
+      .should('have.value', 'Um texto qualquer')
+  })
+
+  it('Faz uma requisição HTTP', () => {
+    cy.request('https://cac-tat-v3.s3.eu-central-1.amazonaws.com/index.html')
+      .as('getRequest')
+      .its('status')
+      .should('be.equal', 200)
+    cy.get('@getRequest')
+      .its('statusText')
+      .should('be.equal', 'OK')
+    cy.get('@getRequest')
+      .its('body')
+      .should('include', 'CAC TAT')
+
+  })
+
+  it('Encontrando o gato escondido', () => {
+    cy.get('#cat')
+      .invoke('show')
+      .should('be.visible')
+      cy.get('#title')
+      .invoke('text', 'CAT')
+      cy.get('#subtitle')
+      .invoke('text', 'Eu amo Deus!💜')
   })
 
 
